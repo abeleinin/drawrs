@@ -1,6 +1,8 @@
 mod shapes;
+mod charset;
+use charset::*;
 
-use std::io::{Write, stdout};
+use std::io::{stdout, Write};
 
 use crossterm::{
     cursor::{self, MoveTo},
@@ -56,7 +58,7 @@ fn main() -> std::io::Result<()> {
 
     let mut points: Vec<Point> = vec![];
 
-    let mut character: char = '*';
+    let mut character: char = lookup("cross").unwrap();
     let mut is_select_character: bool = false;
 
     loop {
